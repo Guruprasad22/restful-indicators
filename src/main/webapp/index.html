@@ -18,20 +18,6 @@
 
 </style>
 
-
-<!--  <script type="text/javascript">
-			$("document").ready(function(){
-				var selectList = $("#stockDrpDown");
-				$.getJSON("http://localhost:8080/tickers", function(data){
-				    $.each(data, function (index, optionData) {
-				    	var option = new Option(optionData);
-				    	selectList[0].add(option, null);
-				    	console.log(optionData);
-				    });
-				});
-			});
-</script>
--->
 </head>
 
 
@@ -51,21 +37,41 @@
 		<div class="col-lg-2">
 			<div class="list-group">
 		  		<button type="button" class="list-group-item">Top gainers</button>
-		  		<button type="button" class="list-group-item">Indicators</button>
+		  		<button type="button" class="list-group-item" id="btn2">Indicators</button>
 		  		<button type="button" class="list-group-item">circuit breakers</button>
 		  		<button type="button" class="list-group-item">Top Losers</button>
 		  		<button type="button" class="list-group-item">Portfolio</button>
 		  		<button type="button" class="list-group-item">Upload</button>
 			</div>
 		</div>
-		<div class="col-lg-10 bg-success">col2</div>
+		<div class="col-lg-10" id="contentPanel" style="visibility:hidden">
+				<label>Please select the stock</label>&nbsp;&nbsp;&nbsp;
+				<select id="stockDrpDown"></select>
+		</div>
 	</div>
 
-<div>		
-	<select id="stockDrpDown">		
-	</select>
-</div>		
+		
+
 </div>
+
+
+<script type="text/javascript">
+			$("document").ready(function(){
+				var selectList = $("#stockDrpDown");
+				$.getJSON("http://localhost:8080/tickers", function(data){
+				    $.each(data, function (index, optionData) {
+				    	var option = new Option(optionData);
+				    	selectList[0].add(option, null);
+				    });
+				});
+			});
+			
+			$("#btn2").click(function(){
+				$("#contentPanel").css("visibility", "visible");
+			});
+</script>
+
+
 
 </body>
 	

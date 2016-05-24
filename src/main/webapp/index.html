@@ -33,25 +33,26 @@
 	</ul>
 </nav>		
 </div>
-	<div class="row">
+	<div class="row" id="myContainer">
 		<div class="col-lg-2">
 			<div class="list-group">
-		  		<button type="button" class="list-group-item">Top gainers</button>
+		  		<button type="button" class="list-group-item" id="btn1">Top gainers</button>
 		  		<button type="button" class="list-group-item" id="btn2">Indicators</button>
-		  		<button type="button" class="list-group-item">circuit breakers</button>
-		  		<button type="button" class="list-group-item">Top Losers</button>
-		  		<button type="button" class="list-group-item">Portfolio</button>
-		  		<button type="button" class="list-group-item">Upload</button>
+		  		<button type="button" class="list-group-item" id="btn3">circuit breakers</button>
+		  		<button type="button" class="list-group-item" id="btn4">Top Losers</button>
+		  		<button type="button" class="list-group-item" id="btn5">Portfolio</button>
+		  		<button type="button" class="list-group-item" id="btn6">Upload</button>
 			</div>
 		</div>
-		<div class="col-lg-10" id="contentPanel" style="visibility:hidden">
-				<label>Please select the stock</label>&nbsp;&nbsp;&nbsp;
-				<select id="stockDrpDown"></select>
+		<div class="col-lg-10" id="indicatorPanel" >
 		</div>
+
 	</div>
+</div>
 
-		
-
+<div class="indicators" style="visibility:hidden">
+	<label>Please select the stock</label>&nbsp;&nbsp;&nbsp;
+	<select id="stockDrpDown"></select>
 </div>
 
 
@@ -67,11 +68,15 @@
 			});
 			
 			$("#btn2").click(function(){
-				$("#contentPanel").css("visibility", "visible");
+				console.log("inside bt2 click");
+				var selectHtml = $(".indicators").html();
+				$("#indicatorPanel").html(selectHtml);
+			});
+			$("#btn6").click(function(){
+				console.log("btn6 click")
+				$("#indicatorPanel").empty();
 			});
 </script>
-
-
 
 </body>
 	

@@ -14,8 +14,6 @@
 <script src="js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <style>
-
-
 </style>
 
 </head>
@@ -55,29 +53,64 @@
 	<select id="stockDrpDown"></select>
 </div>
 
+<div class="tickerTable" style="visibility:hidden">
+	<table class="table">
+		<tr>
+			<th>Symbol</th>
+			<th>Close</th>
+			<th>Timestamp</th>
+			<th>Sma</th>
+			<th>Ema12</th>
+			<th>Ema26</th>
+			<th>Fastmacd</th>
+			<th>Slowmacd</th>
+		</tr>
+	</table>
+</div>
 
-<script type="text/javascript">
-			$("document").ready(function(){
-				var selectList = $("#stockDrpDown");
-				$.getJSON("http://localhost:8080/tickers", function(data){
-				    $.each(data, function (index, optionData) {
-				    	var option = new Option(optionData);
-				    	selectList[0].add(option, null);
-				    });
-				});
-			});
-			
-			$("#btn2").click(function(){
-				console.log("inside bt2 click");
-				var selectHtml = $(".indicators").html();
-				$("#indicatorPanel").html(selectHtml);
-			});
-			$("#btn6").click(function(){
-				console.log("btn6 click")
-				$("#indicatorPanel").empty();
-			});
+<div class="upload" style="visibility:hidden">
+	<form id="file_upload" action="#" method="get" enctype="multipart/form-data">
+		<p><input type="file" name="files[]" /></p>
+		<p>
+		<input type="submit" value="Upload" />
+		<a id="add_more" href="#" onclick="addMoreFiles()">Add more</a>
+		</p>
+	</form>
+</div>
+<script>
+/*function loadTickers() {
+var selectList = $("#stockDrpDown");
+$.getJSON("http://localhost:8080/tickers", function(data){
+$.each(data, function (index, optionData) {
+	var option = new Option(optionData);
+	selectList[0].add(option, null);
+	});
+});
+}*/
+
+$("#btn2").click(function(){
+console.log("inside bt2 click");
+var selectHtml = $(".indicators").html();
+$("#indicatorPanel").html(selectHtml);
+});
+	
+$("#btn6").click(function(){
+console.log("btn6 click");
+$("#indicatorPanel").empty();
+var selectHtml = $(".upload").html();
+$("#indicatorPanel").prepend(selectHtml);
+});
+	
+$("#add_more").click(function(){
+console.log("add more clicked");
+//var file_count = $('input[type="file"]').length;
+//alert(file_count);
+});
+
+function addMoreFiles() {
+	$("#file_upload").prepend('<p><input type="file" name="files[]" /></p>')
+}
 </script>
-
 </body>
 	
 </html>

@@ -32,4 +32,14 @@ public class TickerController {
 		}
 		return new ResponseEntity<List<String>>(tickerList,HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value="/upload",
+			method=RequestMethod.PUT,
+			produces=MediaType.APPLICATION_JSON_VALUE
+			)
+	public ResponseEntity<String> uploadData()
+	{
+		return null;
+	}
 }

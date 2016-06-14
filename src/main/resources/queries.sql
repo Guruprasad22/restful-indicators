@@ -17,3 +17,13 @@ truncate table market.indicator;
 truncate table market.ticker;
 truncate table market.file;
 
+--select values from indicator table 
+select * from market.indicator where series='eq' order by symbol,timestamp
+
+
+
+select * from market.indicator limit 5;
+
+--
+
+select distinct str_to_date(timestamp,'%d-%M-%Y') from market.indicator;
